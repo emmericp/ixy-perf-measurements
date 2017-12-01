@@ -1,0 +1,84 @@
+[INFO ] /root/ixy/src/pci.c:42 pci_map_resource(): Mapping PCI resource at /sys/bus/pci/devices/0000:01:00.0/resource0
+[INFO ] /root/ixy/src/driver/ixgbe.c:225 reset_and_init(): Resetting device 0000:01:00.0
+[INFO ] /root/ixy/src/driver/ixgbe.c:237 reset_and_init(): Initializing device 0000:01:00.0
+[INFO ] /root/ixy/src/driver/ixgbe.c:315 ixgbe_set_promisc(): enabling promisc mode
+[INFO ] /root/ixy/src/driver/ixgbe.c:211 wait_for_link(): Waiting for link...
+[INFO ] /root/ixy/src/driver/ixgbe.c:219 wait_for_link(): Link speed is 10000 Mbit/s
+[INFO ] /root/ixy/src/pci.c:42 pci_map_resource(): Mapping PCI resource at /sys/bus/pci/devices/0000:03:00.0/resource0
+[INFO ] /root/ixy/src/driver/ixgbe.c:225 reset_and_init(): Resetting device 0000:03:00.0
+[INFO ] /root/ixy/src/driver/ixgbe.c:237 reset_and_init(): Initializing device 0000:03:00.0
+[INFO ] /root/ixy/src/driver/ixgbe.c:315 ixgbe_set_promisc(): enabling promisc mode
+[INFO ] /root/ixy/src/driver/ixgbe.c:211 wait_for_link(): Waiting for link...
+[INFO ] /root/ixy/src/driver/ixgbe.c:219 wait_for_link(): Link speed is 10000 Mbit/s
+[0000:01:00.0] RX: 9999 Mbit/s 14.88 Mpps
+[0000:01:00.0] TX: 9198 Mbit/s 13.69 Mpps
+[0000:03:00.0] RX: 9999 Mbit/s 14.88 Mpps
+[0000:03:00.0] TX: 9226 Mbit/s 13.73 Mpps
+[0000:01:00.0] RX: 9999 Mbit/s 14.88 Mpps
+[0000:01:00.0] TX: 9191 Mbit/s 13.68 Mpps
+[0000:03:00.0] RX: 9999 Mbit/s 14.88 Mpps
+[0000:03:00.0] TX: 9269 Mbit/s 13.79 Mpps
+[0000:01:00.0] RX: 9999 Mbit/s 14.88 Mpps
+[0000:01:00.0] TX: 9189 Mbit/s 13.68 Mpps
+[0000:03:00.0] RX: 9999 Mbit/s 14.88 Mpps
+[0000:03:00.0] TX: 9268 Mbit/s 13.79 Mpps
+[0000:01:00.0] RX: 9999 Mbit/s 14.88 Mpps
+[0000:01:00.0] TX: 9194 Mbit/s 13.68 Mpps
+[0000:03:00.0] RX: 9999 Mbit/s 14.88 Mpps
+[0000:03:00.0] TX: 9246 Mbit/s 13.76 Mpps
+[0000:01:00.0] RX: 9999 Mbit/s 14.88 Mpps
+[0000:01:00.0] TX: 9198 Mbit/s 13.69 Mpps
+[0000:03:00.0] RX: 9999 Mbit/s 14.88 Mpps
+[0000:03:00.0] TX: 9227 Mbit/s 13.73 Mpps
+[0000:01:00.0] RX: 9999 Mbit/s 14.88 Mpps
+[0000:01:00.0] TX: 9190 Mbit/s 13.68 Mpps
+[0000:03:00.0] RX: 9999 Mbit/s 14.88 Mpps
+[0000:03:00.0] TX: 9268 Mbit/s 13.79 Mpps
+[0000:01:00.0] RX: 9999 Mbit/s 14.88 Mpps
+[0000:01:00.0] TX: 9190 Mbit/s 13.68 Mpps
+[0000:03:00.0] RX: 9999 Mbit/s 14.88 Mpps
+[0000:03:00.0] TX: 9268 Mbit/s 13.79 Mpps
+[0000:01:00.0] RX: 9999 Mbit/s 14.88 Mpps
+[0000:01:00.0] TX: 9194 Mbit/s 13.68 Mpps
+[0000:03:00.0] RX: 9999 Mbit/s 14.88 Mpps
+[0000:03:00.0] TX: 9245 Mbit/s 13.76 Mpps
+[0000:01:00.0] RX: 9999 Mbit/s 14.88 Mpps
+[0000:01:00.0] TX: 9198 Mbit/s 13.69 Mpps
+[0000:03:00.0] RX: 9999 Mbit/s 14.88 Mpps
+[0000:03:00.0] TX: 9228 Mbit/s 13.73 Mpps
+[0000:01:00.0] RX: 9999 Mbit/s 14.88 Mpps
+[0000:01:00.0] TX: 9189 Mbit/s 13.68 Mpps
+[0000:03:00.0] RX: 9999 Mbit/s 14.88 Mpps
+[0000:03:00.0] TX: 9269 Mbit/s 13.79 Mpps
+[0000:01:00.0] RX: 9999 Mbit/s 14.88 Mpps
+[0000:01:00.0] TX: 9190 Mbit/s 13.68 Mpps
+[0000:03:00.0] RX: 9999 Mbit/s 14.88 Mpps
+[0000:03:00.0] TX: 9268 Mbit/s 13.79 Mpps
+[0000:01:00.0] RX: 9999 Mbit/s 14.88 Mpps
+[0000:01:00.0] TX: 9195 Mbit/s 13.68 Mpps
+[0000:03:00.0] RX: 9999 Mbit/s 14.88 Mpps
+[0000:03:00.0] TX: 9244 Mbit/s 13.76 Mpps
+[0000:01:00.0] RX: 9999 Mbit/s 14.88 Mpps
+[0000:01:00.0] TX: 9198 Mbit/s 13.69 Mpps
+[0000:03:00.0] RX: 9999 Mbit/s 14.88 Mpps
+[0000:03:00.0] TX: 9229 Mbit/s 13.73 Mpps
+[0000:01:00.0] RX: 9999 Mbit/s 14.88 Mpps
+[0000:01:00.0] TX: 9189 Mbit/s 13.68 Mpps
+[0000:03:00.0] RX: 9999 Mbit/s 14.88 Mpps
+[0000:03:00.0] TX: 9267 Mbit/s 13.79 Mpps
+[0000:01:00.0] RX: 9999 Mbit/s 14.88 Mpps
+[0000:01:00.0] TX: 9190 Mbit/s 13.68 Mpps
+[0000:03:00.0] RX: 9999 Mbit/s 14.88 Mpps
+[0000:03:00.0] TX: 9268 Mbit/s 13.79 Mpps
+[0000:01:00.0] RX: 9999 Mbit/s 14.88 Mpps
+[0000:01:00.0] TX: 9196 Mbit/s 13.68 Mpps
+[0000:03:00.0] RX: 9999 Mbit/s 14.88 Mpps
+[0000:03:00.0] TX: 9242 Mbit/s 13.75 Mpps
+[0000:01:00.0] RX: 9999 Mbit/s 14.88 Mpps
+[0000:01:00.0] TX: 9198 Mbit/s 13.69 Mpps
+[0000:03:00.0] RX: 9999 Mbit/s 14.88 Mpps
+[0000:03:00.0] TX: 9230 Mbit/s 13.74 Mpps
+[0000:01:00.0] RX: 9999 Mbit/s 14.88 Mpps
+[0000:01:00.0] TX: 9190 Mbit/s 13.68 Mpps
+[0000:03:00.0] RX: 9999 Mbit/s 14.88 Mpps
+[0000:03:00.0] TX: 9
