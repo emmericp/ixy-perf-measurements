@@ -61,8 +61,6 @@ static struct rte_eth_conf port_conf = {
 };
 
 
-
-
 // basically ixy_init for DPDK. it's horrible.
 static void dpdk_dev_init(int portid) {
 	// copy & paste from dpdk-l2fwd
@@ -125,6 +123,43 @@ static void dpdk_dev_init(int portid) {
 
 }
 
+// stats stuff, copied from ixy stats.c
+// returns a timestamp in nanoseconds
+struct device_stats {
+	int device;
+    size_t rx_pkts;
+    size_t tx_pkts;
+    size_t rx_bytes;
+    size_t tx_bytes;
+};
+
+
+static double diff_mpps(uint64_t pkts_new, uint64_t pkts_old, uint64_t nanos) {
+    return (double) (pkts_new - pkts_old) / 1000000.0 / ((double) nanos / 1000000000.0);
+}
+
+// too hard to get the real hardware counters from DPDK for packets, so no byte counters here
+// stuff reported in rte_eth_stats is unfortunately completely inconsistent: packet counters count dropped packets, byte counters only count some of them
+// it's of course completely different between different drivers. stuff like this is the reason why we re-implement these parts in libmoon/MoonGen
+static void print_stats_diff(int device, struct rte_eth_stats* stats_new, struct rte_eth_stats* stats_old, uint64_t nanos) {
+    printf("[%d] RX: %d Mbit/s %.2f Mpps\n", device,
+		-1,
+        diff_mpps(stats_new->ipackets + stats_new->imissed + stats_new->rx_nombuf, stats_old->ipackets + stats_old->imissed + stats_old->rx_nombuf, nanos)
+    );
+    printf("[%d] TX: %d Mbit/s %.2f Mpps\n", device,
+		-1,
+        diff_mpps(stats_new->opackets, stats_old->opackets, nanos)
+    );
+}
+
+
+// based on rdtsc on reasonably configured systems and is hence fast
+static uint64_t monotonic_time(void) {
+	struct timespec timespec;
+	clock_gettime(CLOCK_MONOTONIC, &timespec);
+	return timespec.tv_sec * 1000 * 1000 * 1000 + timespec.tv_nsec;
+}
+
 
 
 static void forward(uint32_t rx_dev, uint16_t rx_queue, uint32_t tx_dev, uint16_t tx_queue) {
@@ -144,6 +179,7 @@ static void forward(uint32_t rx_dev, uint16_t rx_queue, uint32_t tx_dev, uint16_
         }
     }
 }
+
 
 
 int main(int argc, char **argv) {
@@ -168,10 +204,30 @@ int main(int argc, char **argv) {
     dpdk_dev_init(dev1);
     dpdk_dev_init(dev2);
 
+    uint64_t last_stats_printed = monotonic_time();
+	uint32_t counter = 0;
+    struct rte_eth_stats stats1 = {0};
+    struct rte_eth_stats stats1_old = {0};
+    struct rte_eth_stats stats2 = {0};
+    struct rte_eth_stats stats2_old = {0};
+
+	// main loop copy & paste from ixy-fwd for a fair comparison
     while (true) {
 		forward(dev1, 0, dev2, 0);
 		forward(dev2, 0, dev1, 0);
-		// we don't bother with stats here, that's way too messy in DPDK
+        if ((counter++ & 0xFFF) == 0) {
+            uint64_t time = monotonic_time();
+            if (time - last_stats_printed > 1000 * 1000 * 1000) {
+                // every second
+				rte_eth_stats_get(dev1, &stats1);
+                print_stats_diff(dev1, &stats1, &stats1_old, time - last_stats_printed);
+                stats1_old = stats1;
+				rte_eth_stats_get(dev2, &stats2);
+                print_stats_diff(dev2, &stats2, &stats2_old, time - last_stats_printed);
+                stats2_old = stats2;
+                last_stats_printed = time;
+            }
+        }
     }
 
 }

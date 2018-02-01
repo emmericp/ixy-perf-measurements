@@ -44,7 +44,8 @@ APP = l2fwd
 # all source are stored in SRCS-y
 SRCS-y := main.c
 
-CFLAGS += -O3
+# same cflags as in ixy, but O3/O2 makes virtually no difference; DPDK is still compiled with its defaults which is -O3 for the driver
+CFLAGS += -O2 -fomit-frame-pointer -march=native
 CFLAGS += $(WERROR_FLAGS)
 
 include $(RTE_SDK)/mk/rte.extapp.mk
