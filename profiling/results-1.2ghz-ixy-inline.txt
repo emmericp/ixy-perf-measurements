@@ -1,0 +1,22 @@
+6.1 * 2 Mpps
+1.2 GHz
+
+Perf output:
+
+  58.16%  ixy-fwd           [.] ixgbe_rx_batch
+  28.88%  ixy-fwd           [.] ixgbe_tx_batch
+  12.82%  ixy-fwd           [.] forward.constprop.0
+   0.04%  ixy-fwd           [.] main
+
+
+-->
+
+98 cycles/pkt (slower than other result due to profiling!)
+
+rx:  57
+tx:  28.3
+mem: ?
+fwd: 12.5
+
+
+

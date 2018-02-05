@@ -1,0 +1,22 @@
+9.67 * 2 Mpps
+1.2 GHz
+
+Perf output:
+
+  57.11%  l2fwd             [.] ixgbe_recv_scattered_pkts_vec
+  32.34%  l2fwd             [.] ixgbe_xmit_fixed_burst_vec
+   9.76%  l2fwd             [.] forward.constprop.1
+   0.55%  l2fwd             [.] ixgbe_xmit_pkts_vec
+   0.08%  l2fwd             [.] main
+
+-->
+
+62 cycles/pkt (slower than other result due to profiling!)
+
+rx:  35.4
+tx:  20.1 + 0.3
+mem: ?
+fwd: 6
+
+
+
