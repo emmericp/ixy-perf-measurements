@@ -1,0 +1,18 @@
+# TEST RESULTS FOR RING SIZE 4096, no huge pages
+# test done manually because the physical memory was too fragmented during the original run
+
+4096/4096:
+2.4GHz:
+throughput 9.66 * 2
+     5,826,136,514      dTLB-loads                                                    (50.01%)
+         2,893,207      dTLB-load-misses          #    0.05% of all dTLB cache hits   (50.01%)
+     4,221,076,124      dTLB-stores                                                   (49.99%)
+       109,844,409      dTLB-store-misses                                             (49.99%)
+
+1.2GHz:
+throughput 5.21 * 2
+     3,095,867,801      dTLB-loads                                                    (50.01%)
+         1,156,478      dTLB-load-misses          #    0.04% of all dTLB cache hits   (50.01%)
+     2,246,099,337      dTLB-stores                                                   (49.99%)
+        58,711,231      dTLB-store-misses                                             (49.99%)
+
