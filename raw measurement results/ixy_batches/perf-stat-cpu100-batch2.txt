@@ -1,0 +1,14 @@
+# started on Sun Feb  4 20:40:52 2018
+
+59627.345700  task-clock 59627345700 100.00 0.994 CPUs utilized
+58  context-switches 59627348960 100.00 0.001 K/sec
+0  cpu-migrations 59627351580 100.00 0.000 K/sec
+3  page-faults 59627354323 100.00 0.000 K/sec
+142814996602  cycles 29811352083 50.00 2.395 GHz
+88771495814  instructions 37267492311 62.50 0.62 insn per cycle
+11815645476  branches 37271494933 62.51 198.158 M/sec
+21971913  branch-misses 37270943386 62.51 0.19 of all branches
+22117057100  L1-dcache-loads 37260490376 62.49 370.921 M/sec
+2203697891  L1-dcache-load-misses 14904344930 25.00 9.96 of all L1-dcache hits
+988848793  LLC-loads 14904364030 25.00 16.584 M/sec
+2659  LLC-load-misses 22356581914 37.49 0.00 of all LL-cache hits
