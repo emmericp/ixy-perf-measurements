@@ -1,0 +1,20 @@
+# started on Wed Jan 31 21:48:38 2018
+
+
+ Performance counter stats for process id '19960':
+
+      23835.818786      task-clock (msec)         #    0.990 CPUs utilized          
+                32      context-switches          #    0.001 K/sec                  
+                 0      cpu-migrations            #    0.000 K/sec                  
+                 2      page-faults               #    0.000 K/sec                  
+    28,525,203,592      cycles                    #    1.197 GHz                      (49.99%)
+    41,475,432,355      instructions              #    1.45  insn per cycle           (62.50%)
+     5,681,395,735      branches                  #  238.355 M/sec                    (62.50%)
+         7,172,206      branch-misses             #    0.13% of all branches          (62.50%)
+     9,775,967,583      L1-dcache-loads           #  410.138 M/sec                    (62.46%)
+     1,473,930,328      L1-dcache-load-misses     #   15.08% of all L1-dcache hits    (25.00%)
+     1,037,532,142      LLC-loads                 #   43.528 M/sec                    (25.00%)
+               152      LLC-load-misses           #    0.00% of all LL-cache hits     (37.50%)
+
+      24.078463037 seconds time elapsed
+

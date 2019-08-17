@@ -1,0 +1,92 @@
+From a10e89d4fb42fa21161391631e3a630e0b883d64 Mon Sep 17 00:00:00 2001
+From: Paul Emmerich <emmericp@net.in.tum.de>
+Date: Mon, 5 Feb 2018 00:07:48 +0100
+Subject: [PATCH] inline memory operations
+
+---
+ src/memory.c | 24 ------------------------
+ src/memory.h | 30 +++++++++++++++++++++++++++---
+ 2 files changed, 27 insertions(+), 27 deletions(-)
+
+diff --git a/src/memory.c b/src/memory.c
+index 62d0b64..c33bcc0 100644
+--- a/src/memory.c
++++ b/src/memory.c
+@@ -89,27 +89,3 @@ struct mempool* memory_allocate_mempool(uint32_t num_entries, uint32_t entry_siz
+ 	}
+ 	return mempool;
+ }
+-
+-uint32_t pkt_buf_alloc_batch(struct mempool* mempool, struct pkt_buf* bufs[], uint32_t num_bufs) {
+-	if (mempool->free_stack_top < num_bufs) {
+-		warn("memory pool %p only has %d free bufs, requested %d", mempool, mempool->free_stack_top, num_bufs);
+-		num_bufs = mempool->free_stack_top;
+-	}
+-	for (uint32_t i = 0; i < num_bufs; i++) {
+-		uint32_t entry_id = mempool->free_stack[--mempool->free_stack_top];
+-		bufs[i] = (struct pkt_buf*) (((uint8_t*) mempool->base_addr) + entry_id * mempool->buf_size);
+-	}
+-	return num_bufs;
+-}
+-
+-struct pkt_buf* pkt_buf_alloc(struct mempool* mempool) {
+-	struct pkt_buf* buf = NULL;
+-	pkt_buf_alloc_batch(mempool, &buf, 1);
+-	return buf;
+-}
+-
+-void pkt_buf_free(struct pkt_buf* buf) {
+-	struct mempool* mempool = buf->mempool;
+-	mempool->free_stack[mempool->free_stack_top++] = buf->mempool_idx;
+-}
+-
+diff --git a/src/memory.h b/src/memory.h
+index 6d4e3af..11d6165 100644
+--- a/src/memory.h
++++ b/src/memory.h
+@@ -7,6 +7,8 @@
+ #include <stddef.h>
+ #include <assert.h>
+ 
++#include "log.h"
++
+ #define HUGE_PAGE_BITS 21
+ #define HUGE_PAGE_SIZE (1 << HUGE_PAGE_BITS)
+ #define SIZE_PKT_BUF_HEADROOM 40
+@@ -45,8 +47,30 @@ struct dma_memory {
+ struct dma_memory memory_allocate_dma(size_t size, bool require_contiguous);
+ 
+ struct mempool* memory_allocate_mempool(uint32_t num_entries, uint32_t entry_size);
+-uint32_t pkt_buf_alloc_batch(struct mempool* mempool, struct pkt_buf* bufs[], uint32_t num_bufs);
+-struct pkt_buf* pkt_buf_alloc(struct mempool* mempool);
+-void pkt_buf_free(struct pkt_buf* buf);
++
++
++static inline uint32_t pkt_buf_alloc_batch(struct mempool* mempool, struct pkt_buf* bufs[], uint32_t num_bufs) {
++	if (mempool->free_stack_top < num_bufs) {
++		warn("memory pool %p only has %d free bufs, requested %d", mempool, mempool->free_stack_top, num_bufs);
++		num_bufs = mempool->free_stack_top;
++	}
++	for (uint32_t i = 0; i < num_bufs; i++) {
++		uint32_t entry_id = mempool->free_stack[--mempool->free_stack_top];
++		bufs[i] = (struct pkt_buf*) (((uint8_t*) mempool->base_addr) + entry_id * mempool->buf_size);
++	}
++	return num_bufs;
++}
++
++static inline struct pkt_buf* pkt_buf_alloc(struct mempool* mempool) {
++	struct pkt_buf* buf = NULL;
++	pkt_buf_alloc_batch(mempool, &buf, 1);
++	return buf;
++}
++
++static inline void pkt_buf_free(struct pkt_buf* buf) {
++	struct mempool* mempool = buf->mempool;
++	mempool->free_stack[mempool->free_stack_top++] = buf->mempool_idx;
++}
++
+ 
+ #endif //IXY_MEMORY_H
+-- 
+2.11.0
+

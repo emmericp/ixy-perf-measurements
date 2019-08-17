@@ -1,3 +1,8 @@
+Work in Progress: Full paper
+============================
+The repository does not yet contain all scripts used for the full paper and this README is only partially updated for the new test setups.
+
+
 Scripts used for the ixy paper
 ==============================
 This repository contains all scripts used for the performance evaluation of ixy in the paper.
@@ -5,16 +10,16 @@ This repository contains all scripts used for the performance evaluation of ixy 
 
 System Setup
 ------------
-* Ubuntu 16.04, Kernel 4.4
-* ixy commit 436750e checked out in /root/ixy
-* Source code also included here in `ixy`
+* Debian Stretch, Kernel 4.9
+* ixy commit XXXXX checked out in /root/ixy
+* Source code also included here in `ixy` TODO: UPDATE SOURCE
 * Compile ixy following `ixy/README.md`
 
-Required Hardware/Packet Generator
+Used Hardware/Packet Generator
 ----------------------------------
-* Intel X520-T2 and X520-T1 NICs
-* Intel Xeon E3-1230 V2 3.3 GHz CPU, *performance has not been confirmed on other CPU architectures*
-* NIC directly connected to a server running MoonGen
+* Multiple NICs of the Intel ixgbe family: X520 and X540
+* Intel Xeon E5-2630 and E5-2620
+* NICs directly connected to a server running MoonGen
 * MoonGen commit 31af6e6 was used
 * MoonGen command line: `./build/MoonGen examples/l2-load-latency.lua 0 1`, adjust port IDs
 

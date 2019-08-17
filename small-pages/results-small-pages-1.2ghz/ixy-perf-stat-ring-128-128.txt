@@ -1,0 +1,12 @@
+# started on Mon Feb  5 04:08:28 2018
+
+
+ Performance counter stats for process id '30473':
+
+    13,939,503,599      dTLB-loads                                                    (50.00%)
+             3,514      dTLB-load-misses          #    0.00% of all dTLB cache hits   (50.00%)
+    10,110,875,141      dTLB-stores                                                   (50.00%)
+               186      dTLB-store-misses                                             (50.00%)
+
+      40.001592016 seconds time elapsed
+
